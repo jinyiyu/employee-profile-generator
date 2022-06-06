@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/jinyiyu/employee-profile-generator/issues"
   },
-  "homepage": "https://github.com/jinyiyu/employee-profile-generator#readme"
+  "homepage": "https://github.com/jinyiyu/employee-profile-generator#readme",
+  "dependencies": {
+    "inquirer": "^8.2.4"
+  }
 }
