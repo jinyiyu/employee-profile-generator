@@ -1,7 +1,12 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
+const Employee = require("./lib/Employee");
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
+const Manager = require("./lib/Manager");
+const getAnswers = require("./utils/getAnswers");
 
-const questions = [
+const generalQuestions = [
   {
     name: "teamName",
     type: "input",
@@ -12,36 +17,45 @@ const questions = [
     type: "input",
     message: "What do you want to name your HTML file?",
   },
-  //   questions for manager
+];
+
+const managerQuestions = [
   {
-    name: "managerName",
+    name: "name",
     type: "input",
     message: "Please enter the team manager's name.",
   },
   {
-    name: "managerID",
+    name: "id",
     type: "input",
     message: "Please enter the team manager's ID.",
   },
   {
-    name: "managerEmail",
+    name: "email",
     type: "input",
     message: "Please enter the team manager's email.",
   },
   {
-    name: "managerOfficeNum",
+    name: "officeNum",
     type: "input",
     message: "Please enter the team manager's Office Number.",
   },
-  //   looping questions
+];
+
+const loopingQuestions = [
   {
-    name: "addTeamNum",
+    name: "employeeRole",
     type: "list",
     message:
       "What Would you like to do next?(choose another team member to add or quit)",
-    choices: ["Software Engineer", "Intern", "Quit the Application"],
+    choices: [
+      { key: "Software Engineer", value: "software engineer" },
+      { key: "Intern", value: "intern" },
+      { key: "Quit the Application", value: "quit" },
+    ],
   },
-  //   questions for software engineer
+];
+const softwareQuestions = [
   {
     name: "engineerName",
     type: "input",
@@ -62,7 +76,9 @@ const questions = [
     type: "input",
     message: "Please enter the Engineer's Github Username.",
   },
-  // questions for interns
+];
+
+const internQuestions = [
   {
     name: "internName",
     type: "input",
@@ -84,3 +100,28 @@ const questions = [
     message: "Please enter the Intern's school.",
   },
 ];
+
+const init = async () => {
+  // ask general questions
+  //   const { teamName, fileName } = await getAnswers(generalQuestions);
+  //   const managerAnswers = await getAnswers(managerQuestions);
+  //   const manager1 = new Manager(managerAnswers);
+  //   console.log(manager1);
+
+  // start the loop - in the loop check using if conditions
+  const { employeeRole } = await getAnswers(loopingQuestions);
+  if (employeeRole === "software engineer") {
+    // if ask questions - creat new instance - push in team array
+    console.log("engineer");
+  } else if (employeeRole === "intern") {
+    console.log("intern");
+  } else {
+    console.log("quit");
+  }
+
+  // if quit the exit the loop - while (let looping true -  false)
+  // reander HTML
+  //   write html to file
+};
+
+init();
