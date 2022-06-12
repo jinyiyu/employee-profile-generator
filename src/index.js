@@ -55,24 +55,24 @@ const loopingQuestions = [
     ],
   },
 ];
-const softwareQuestions = [
+const engineerQuestions = [
   {
-    name: "engineerName",
+    name: "name",
     type: "input",
     message: "Please enter the Engineer's name.",
   },
   {
-    name: "engineerID",
+    name: "id",
     type: "input",
     message: "Please enter the Engineer's ID.",
   },
   {
-    name: "engineerEmail",
+    name: "email",
     type: "input",
     message: "Please enter the Engineer's email.",
   },
   {
-    name: "engineerGithub",
+    name: "github",
     type: "input",
     message: "Please enter the Engineer's Github Username.",
   },
@@ -80,46 +80,62 @@ const softwareQuestions = [
 
 const internQuestions = [
   {
-    name: "internName",
+    name: "name",
     type: "input",
     message: "Please enter the Intern's name.",
   },
   {
-    name: "internID",
+    name: "id",
     type: "input",
     message: "Please enter the Intern's ID.",
   },
   {
-    name: "internEmail",
+    name: "email",
     type: "input",
     message: "Please enter the Intern's email.",
   },
   {
-    name: "internSchool",
+    name: "school",
     type: "input",
     message: "Please enter the Intern's school.",
   },
 ];
 
+const getAllMembers = async () => {
+  const teamArray = [];
+  let loopingStatus = true;
+  while (loopingStatus) {
+    // start the loop - in the loop check if add team member using if conditions
+    const { employeeRole } = await getAnswers(loopingQuestions);
+
+    if (employeeRole === "software engineer") {
+      // ask questions - creat new instance - push in team array
+      const engineerAnswers = await getAnswers(engineerQuestions);
+
+      const engineer = new Engineer(engineerAnswers);
+      console.log(engineer);
+      teamArray.push(engineer);
+    } else if (employeeRole === "intern") {
+      const internAnswers = await getAnswers(internQuestions);
+
+      const intern = new Intern(internAnswers);
+      console.log(intern);
+      teamArray.push(intern);
+    } else {
+      loopingStatus = false;
+    }
+  }
+  return teamArray;
+};
+
 const init = async () => {
   // ask general questions
-  //   const { teamName, fileName } = await getAnswers(generalQuestions);
-  //   const managerAnswers = await getAnswers(managerQuestions);
-  //   const manager1 = new Manager(managerAnswers);
-  //   console.log(manager1);
+  const { teamName, fileName } = await getAnswers(generalQuestions);
+  const manager = await getAnswers(managerQuestions);
 
-  // start the loop - in the loop check using if conditions
-  const { employeeRole } = await getAnswers(loopingQuestions);
-  if (employeeRole === "software engineer") {
-    // if ask questions - creat new instance - push in team array
-    console.log("engineer");
-  } else if (employeeRole === "intern") {
-    console.log("intern");
-  } else {
-    console.log("quit");
-  }
+  const teamMembers = await getAllMembers();
+  console.log({ teamName, fileName, manager, teamMembers });
 
-  // if quit the exit the loop - while (let looping true -  false)
   // reander HTML
   //   write html to file
 };
