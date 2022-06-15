@@ -45,7 +45,7 @@ const loopingQuestions = [
     name: "employeeRole",
     type: "list",
     message:
-      "What Would you like to do next?(choose another team member to add or quit)",
+      "What would you like to do next? (choose another team member to add or quit)",
     choices: [
       { key: "Software Engineer", value: "software engineer" },
       { key: "Intern", value: "intern" },
@@ -133,7 +133,8 @@ const getAllMembers = async () => {
 const init = async () => {
   // ask general and manager questions
   const { teamName, fileName } = await getAnswers(generalQuestions);
-  const manager = await getAnswers(managerQuestions);
+  const managerAnswers = await getAnswers(managerQuestions);
+  const manager = new Manager(managerAnswers);
   // ask looping questions and ask subsequent team member questions
   const teamMembers = await getAllMembers();
   // reander HTML
