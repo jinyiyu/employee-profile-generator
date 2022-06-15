@@ -3,6 +3,7 @@ const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
 const getAnswers = require("./utils/getAnswers");
 const writeToFile = require("./utils/writeToFile");
+const renderHTML = require("./utils/renderHTML");
 
 const generalQuestions = [
   {
@@ -126,10 +127,6 @@ const getAllMembers = async () => {
   return teamArray;
 };
 
-const renderHTML = (teamMembers) => {
-  return teamMembers;
-};
-
 const init = async () => {
   // ask general and manager questions
   const { teamName, fileName } = await getAnswers(generalQuestions);
@@ -139,10 +136,10 @@ const init = async () => {
   const teamMembers = await getAllMembers();
   // reander HTML
   // console.log({ teamName, fileName, manager, teamMembers });
-  renderHTML(teamMembers);
+  const team = renderHTML(teamMembers);
 
   //   write html to file
-  // writeToFile(fileName, renderHTML);
+  writeToFile(fileName, team);
 };
 
 init();
