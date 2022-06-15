@@ -7,7 +7,6 @@ describe("Employee", () => {
   const test = { name, id, email };
 
   const employee = new Employee(test);
-  console.log(employee);
 
   it("Should pass the testName", () => {
     expect(employee.getName()).toEqual(name);

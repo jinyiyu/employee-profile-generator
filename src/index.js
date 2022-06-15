@@ -126,9 +126,9 @@ const getAllMembers = async () => {
   return teamArray;
 };
 
-// const renderHTML = (obj) => {
-//   return obj;
-// };
+const renderHTML = (teamMembers) => {
+  return teamMembers;
+};
 
 const init = async () => {
   // ask general and manager questions
@@ -138,8 +138,8 @@ const init = async () => {
   // ask looping questions and ask subsequent team member questions
   const teamMembers = await getAllMembers();
   // reander HTML
-  console.log({ teamName, fileName, manager, teamMembers });
-  // renderHTML({ teamName, fileName, manager, teamMembers });
+  // console.log({ teamName, fileName, manager, teamMembers });
+  renderHTML(teamMembers);
 
   //   write html to file
   // writeToFile(fileName, renderHTML);
