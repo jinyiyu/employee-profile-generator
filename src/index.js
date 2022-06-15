@@ -1,10 +1,8 @@
-const inquirer = require("inquirer");
-const fs = require("fs");
-const Employee = require("./lib/Employee");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
 const getAnswers = require("./utils/getAnswers");
+const writeToFile = require("./utils/writeToFile");
 
 const generalQuestions = [
   {
@@ -128,16 +126,22 @@ const getAllMembers = async () => {
   return teamArray;
 };
 
+// const renderHTML = (obj) => {
+//   return obj;
+// };
+
 const init = async () => {
-  // ask general questions
+  // ask general and manager questions
   const { teamName, fileName } = await getAnswers(generalQuestions);
   const manager = await getAnswers(managerQuestions);
-
+  // ask looping questions and ask subsequent team member questions
   const teamMembers = await getAllMembers();
-  console.log({ teamName, fileName, manager, teamMembers });
-
   // reander HTML
+  console.log({ teamName, fileName, manager, teamMembers });
+  // renderHTML({ teamName, fileName, manager, teamMembers });
+
   //   write html to file
+  // writeToFile(fileName, renderHTML);
 };
 
 init();
