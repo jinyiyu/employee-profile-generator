@@ -9,19 +9,19 @@ describe("Manager", () => {
 
   const manager = new Manager(test);
 
-  it("Should pass the testName value", () => {
+  it("Should pass the test Name value", () => {
     expect(manager.getName()).toEqual(name);
   });
-  it("Should return the testID value", () => {
+  it("Should return the test ID value", () => {
     expect(manager.getId()).toEqual(id);
   });
-  it("Should return the testEmail value", () => {
+  it("Should return the test Email value", () => {
     expect(manager.getEmail()).toEqual(email);
   });
-  it("Should return the testschool value", () => {
+  it("Should return the Office Number value", () => {
     expect(manager.getOfficeNum()).toEqual(officeNum);
   });
-  it("Should return the intern for getRole method", () => {
+  it("Should return Manager for getRole method", () => {
     expect(manager.getRole()).toEqual("Manager");
   });
 });
