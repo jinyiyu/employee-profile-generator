@@ -1,9 +1,37 @@
-// const Manager = require("../lib/Manager");
-// const Engineer = require("../lib/Engineer");
-// const Intern = require("../lib/Intern");
-// const Employee = require("../lib/Employee");
+const Manager = require("../lib/Manager");
+const Engineer = require("../lib/Engineer");
+const Intern = require("../lib/Intern");
+const Employee = require("../lib/Employee");
 
-const renderHTML = ({ teamName, fileName, manager, teamMembers }) => {
+const renderManagerCard = (manager) => {
+  return `<div class="col-md-3 m-3 col-sm-12 d-flex justify-content-center flex-wrap">
+  <div class="card">
+    <div class="card-img-top bgColor">
+      team member icon
+      <h5 class="card-title">${manager.getRole()}</h5>
+    </div>
+    <div class="card-body">
+      <p class="card-text">${manager.name}</p>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">${manager.id}</li>
+        <li class="list-group-item">${manager.getOfficeNum()}</li>
+        <li class="list-group-item">
+          <a href="#" class="card-link">${manager.email}</a>
+        </li>
+      </ul>
+      <div class="card-body"></div>
+    </div>
+  </div>
+</div>`;
+};
+const renderRestCard = (teamMembers) => {
+  teamMembers.map((employee) => {
+    if (employee instanceof Intern) {
+      return `<p>hi</p>`;
+    }
+  });
+};
+const renderHTML = ({ teamName, manager, teamMembers }) => {
   return `<!DOCTYPE html>
   <html lang="en">
     <head>
@@ -41,35 +69,14 @@ const renderHTML = ({ teamName, fileName, manager, teamMembers }) => {
           <!-- my banner section -->
           <div class="jumbotron">
             <p class="p-4 fs-5 ms-5">We are</p>
-            <h1 class="display-4 fw-normal p-4 ms-5">Team Name!</h1>
+            <h1 class="display-4 fw-normal p-4 ms-5">${teamName}</h1>
             <hr class="my-4" />
           </div>
         </div>
         <div class="col-md-12 border row g-0 p-2 cardContainer">
-          <div
-            class="col-md-3 m-3 col-sm-12 d-flex justify-content-center flex-wrap"
-          >
-            <div class="card">
-              <div class="card-img-top bgColor">
-                team member icon
-                <h5 class="card-title">employee's role</h5>
-              </div>
-              <div class="card-body">
-                <p class="card-text">employee's name</p>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">employee's ID</li>
-                  <li class="list-group-item">employee's officenum</li>
-                  <li class="list-group-item">
-                    <a href="#" class="card-link">employee's github orother</a>
-                  </li>
-                  <li class="list-group-item">
-                    <a href="#" class="card-link">employee's email</a>
-                  </li>
-                </ul>
-                <div class="card-body"></div>
-              </div>
-            </div>
-          </div>
+          <div>
+          ${renderManagerCard(manager)}
+          ${renderRestCard(teamMembers)}
         </div>
       </main>
       <footer></footer>

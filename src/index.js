@@ -135,8 +135,8 @@ const init = async () => {
   // ask looping questions and ask subsequent team member questions
   const teamMembers = await getAllMembers();
   // reander HTML
-  // console.log({ teamName, fileName, manager, teamMembers });
-  const html = renderHTML({ teamName, fileName, manager, teamMembers });
+  console.log({ teamName, fileName, manager, teamMembers });
+  const html = renderHTML({ teamName, manager, teamMembers });
 
   //   write html to file
   writeToFile(fileName, html);

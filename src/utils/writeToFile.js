@@ -10,5 +10,3 @@ const writeToFile = (fileName, html) => {
 
 module.exports = writeToFile;
 
-// pass by reference
-// pass by value
