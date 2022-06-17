@@ -136,10 +136,10 @@ const init = async () => {
   const teamMembers = await getAllMembers();
   // reander HTML
   // console.log({ teamName, fileName, manager, teamMembers });
-  const team = renderHTML({ teamName, fileName, manager, teamMembers });
+  const html = renderHTML({ teamName, fileName, manager, teamMembers });
 
   //   write html to file
-  writeToFile(fileName, team);
+  writeToFile(fileName, html);
 };
 
 init();
