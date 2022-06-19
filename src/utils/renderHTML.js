@@ -1,10 +1,12 @@
-const Manager = require("../lib/Manager");
 const Engineer = require("../lib/Engineer");
 const Intern = require("../lib/Intern");
-const Employee = require("../lib/Employee");
+const Manager = require("../lib/Manager");
 
-const renderManagerCard = (manager) => {
-  return `<div class="col-md-3 m-3 col-sm-12 d-flex justify-content-center flex-wrap">
+const renderCards = (manager, teamMembers) => {
+  const htmlArray = [];
+  if (manager instanceof Manager) {
+    htmlArray.push(`
+<div class="col-md-3 m-3 col-sm-12 d-flex justify-content-center flex-wrap">
   <div class="card">
     <div class="card-img-top bgColor">
       team member icon
@@ -22,15 +24,60 @@ const renderManagerCard = (manager) => {
       <div class="card-body"></div>
     </div>
   </div>
-</div>`;
-};
-const renderRestCard = (teamMembers) => {
-  teamMembers.map((employee) => {
+</div>
+`);
+  }
+  teamMembers.forEach((employee) => {
     if (employee instanceof Intern) {
-      return `<p>hi</p>`;
+      htmlArray.push(`
+      <div class="col-md-3 m-3 col-sm-12 d-flex justify-content-center flex-wrap">
+        <div class="card">
+          <div class="card-img-top bgColor">
+            team member icon
+            <h5 class="card-title">${employee.getRole()}</h5>
+          </div>
+          <div class="card-body">
+            <p class="card-text">${employee.name}</p>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">${employee.id}</li>
+              <li class="list-group-item">${employee.getSchool()}</li>
+              <li class="list-group-item">
+                <a href="#" class="card-link">${employee.email}</a>
+              </li>
+            </ul>
+            <div class="card-body"></div>
+          </div>
+        </div>
+      </div>
+      `);
+    }
+    if (employee instanceof Engineer) {
+      htmlArray.push(`
+        <div class="col-md-3 m-3 col-sm-12 d-flex justify-content-center flex-wrap">
+          <div class="card">
+            <div class="card-img-top bgColor">
+              team member icon
+              <h5 class="card-title">${employee.getRole()}</h5>
+            </div>
+            <div class="card-body">
+              <p class="card-text">${employee.name}</p>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">${employee.id}</li>
+                <li class="list-group-item">${employee.getGithub()}</li>
+                <li class="list-group-item">
+                  <a href="#" class="card-link">${employee.email}</a>
+                </li>
+              </ul>
+              <div class="card-body"></div>
+            </div>
+          </div>
+        </div>
+        `);
     }
   });
+  return htmlArray.join("");
 };
+
 const renderHTML = ({ teamName, manager, teamMembers }) => {
   return `<!DOCTYPE html>
   <html lang="en">
@@ -74,9 +121,7 @@ const renderHTML = ({ teamName, manager, teamMembers }) => {
           </div>
         </div>
         <div class="col-md-12 border row g-0 p-2 cardContainer">
-          <div>
-          ${renderManagerCard(manager)}
-          ${renderRestCard(teamMembers)}
+          ${renderCards(manager, teamMembers)}
         </div>
       </main>
       <footer></footer>
