@@ -7,6 +7,7 @@
 - [User Story](#User-Story)
 - [Criteria](#Criteria)
 - [Mock-Up](#Mock-Up)
+- [Demo Video](#Demo-Video)
 - [Run the project](#Run-the-project)
 - [File Structure](#File-Structure)
 - [Employee Classes Structure](#Employee-Classes-Structure)
@@ -73,6 +74,10 @@ The following image shows a mock-up of the generated HTML’s appearance and fun
 ![HTML webpage titled “My Team” features boxes listing employee names, titles, and other key info.](./dist/assets/image/mockupHTML.png)
 
 <br />
+
+## Demo Video
+
+Check out the Demo Video [Here](https://drive.google.com/file/d/1hjjCxxA3xfrbeqKvU2ptvls1HuMvEw6p/view)
 
 ## Run the project
 
