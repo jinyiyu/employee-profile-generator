@@ -41,5 +41,12 @@ body {
 
 /* card section control */
 .cardContainer {
-  /* height: 20rem; */
+  height: 20rem;
+}
+
+.roleTitle {
+  text-align: center;
+  padding-top: 20%;
+  padding-left: 20%;
+  padding-right: 20%;
 }

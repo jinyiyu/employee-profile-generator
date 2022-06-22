@@ -9,8 +9,8 @@ const renderCards = (manager, teamMembers) => {
 <div class="col-md-3 m-3 col-sm-12 d-flex justify-content-center flex-wrap">
   <div class="card">
     <div class="card-img-top bgColor">
-      team member icon
-      <h5 class="card-title">${manager.getRole()}</h5>
+      
+      <h5 class="card-title roleTitle">${manager.getRole()}</h5>
     </div>
     <div class="card-body">
       <p class="card-text">${manager.name}</p>
@@ -33,8 +33,8 @@ const renderCards = (manager, teamMembers) => {
       <div class="col-md-3 m-3 col-sm-12 d-flex justify-content-center flex-wrap">
         <div class="card">
           <div class="card-img-top bgColor">
-            team member icon
-            <h5 class="card-title">${employee.getRole()}</h5>
+           
+            <h5 class="card-title roleTitle">${employee.getRole()}</h5>
           </div>
           <div class="card-body">
             <p class="card-text">${employee.name}</p>
@@ -56,8 +56,8 @@ const renderCards = (manager, teamMembers) => {
         <div class="col-md-3 m-3 col-sm-12 d-flex justify-content-center flex-wrap">
           <div class="card">
             <div class="card-img-top bgColor">
-              team member icon
-              <h5 class="card-title">${employee.getRole()}</h5>
+              
+              <h5 class="card-title roleTitle">${employee.getRole()}</h5>
             </div>
             <div class="card-body">
               <p class="card-text">${employee.name}</p>
@@ -107,7 +107,7 @@ const renderHTML = ({ teamName, manager, teamMembers }) => {
       />
       <!-- style links -->
       <title>Document</title>
-      <link rel="stylesheet" href="./assets/styles.css" />
+      <link rel="stylesheet" href="./assets/css/styles.css" />
     </head>
     <body>
       <header></header>
@@ -120,7 +120,7 @@ const renderHTML = ({ teamName, manager, teamMembers }) => {
             <hr class="my-4" />
           </div>
         </div>
-        <div class="col-md-12 border row g-0 p-2 cardContainer">
+        <div class="col-md-12 row g-0 p-2 cardContainer">
           ${renderCards(manager, teamMembers)}
         </div>
       </main>
